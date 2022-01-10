@@ -43,13 +43,16 @@
     ></script>
     <script
       type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c06242e4a9d597f942abd0370042edbf&libraries=services,clusterer,drawing"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c8cb66006a235d48fe9fd48b319d1f7&libraries=services,clusterer,drawing"
     ></script>
     <script src="/js/home/midpoint.js" defer></script>
   </head>
 
   <body onload="search_mid();">
-    <div class="header" style="display: flex; align-items: center; padding: 0 45px 0 45px; width: 100%">
+    <div
+      class="header"
+      style="display: flex; flex-wrap: nowrap; align-items: center; padding: 0 45px 0 45px; width: 100%"
+    >
       <h2 style="display: flex; align-items: center">
         <a href="/">
           <img src="/assets/person.png" style="width: 30px; margin-right: 10px" />UNIV MEETING PLACE
@@ -74,7 +77,7 @@
 
     <div class="mobile-menu-overlay"></div>
 
-    <div class="main-container" style="padding-left: 20px">
+    <div class="main-container">
       <div class="pd-ltr-20">
         <div class="row">
           <div class="col-xl-4 mb-30">
@@ -98,9 +101,9 @@
                 </a>
                 <div id="subwayList" class="dropdown-menu dropdown-menu-right" style=""></div>
               </div>
-              <h2 class="h4" style="margin-bottom: 0">
+              <h5 class="h5" style="margin-bottom: 0">
                 <span id="centerAddr" style="color: #1b00ff"></span> 주변
-              </h2>
+              </h5>
               <p style="color: #b4b4b4; margin-bottom: 20px">약속 장소를 선택해주세요.</p>
               <div class="option">
                 <div class="category btn-group" style="display: flex">
@@ -126,7 +129,7 @@
               </div>
               <hr />
               <div style="display: flex; justify-content: space-between; margin-bottom: 10px">
-                <select id="sortby" class="custom-select col-3" name="sortby">
+                <select id="sortby" class="custom-select col-4" name="sortby">
                   <option value="ACCURACY" selected>정확도순</option>
                   <option value="DISTANCE">거리순</option>
                 </select>
@@ -143,14 +146,14 @@
                 </select>
               </div>
 
-              <ul id="placesList" style="overflow: auto; height: 303px"></ul>
+              <ul id="placesList" style="overflow: auto; height: 231px"></ul>
               <div id="pagination"></div>
             </div>
           </div>
           <div class="col-xl-8 mb-30">
             <div class="card-box height-100-p pd-20">
               <div style="display: flex; justify-content: space-between">
-                <h2 class="h4 mb-20">지도</h2>
+                <h5 class="h5 mb-20">지도</h5>
                 <div>
                   <button
                     class="btn btn-outline-secondary"

@@ -209,7 +209,7 @@ a {
 .map_wrap {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 400px;
 }
 
 #placesList li {
@@ -356,4 +356,16 @@ a {
 
 #centerAddr {
   font-weight: bold;
+}
+
+.category button {
+  font-size: 0.7rem;
+}
+
+.custom-select {
+  height: 35px;
+}
+
+.dropdown-item {
+  font-size: 14px;
 }

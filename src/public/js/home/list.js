@@ -22,7 +22,7 @@ async function load() {
         i + 1
       }" onclick="popUpDetail(${i + 1})">${db[i].place_name}</button><div class="form-group" id="div${
         i + 1
-      }"></div><br>`
+      }"></div>`
     );
   }
 }
@@ -118,7 +118,7 @@ async function popUpDetail(listOrder) {
       var coord = new kakao.maps.LatLng(starting_lat[i], starting_lng[i]);
       var callback = function coord2AddressCallback(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-          users.innerHTML += "<br><div id='userbar'><h5>멤버" + userCnt + "</h5>";
+          users.innerHTML += "<br><div id='userbar'><h5 style='font-size:16px'>멤버" + userCnt + "</h5>";
 
           if (result[0].road_address == null) {
             users.innerHTML += result[0].address.address_name;

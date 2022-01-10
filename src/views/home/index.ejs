@@ -49,7 +49,10 @@
   </head>
 
   <body onload="current_position();">
-    <div class="header" style="display: flex; align-items: center; padding: 0 45px 0 45px; width: 100%">
+    <div
+      class="header"
+      style="display: flex; flex-wrap: nowrap; align-items: center; padding: 0 45px 0 45px; width: 100%"
+    >
       <h2 style="display: flex; align-items: center">
         <a href="/">
           <img src="/assets/person.png" style="width: 30px; margin-right: 10px" />UNIV MEETING PLACE
@@ -74,13 +77,15 @@
 
     <div class="mobile-menu-overlay"></div>
 
-    <div class="main-container" style="padding-left: 20px">
+    <div class="main-container">
       <div class="pd-ltr-20">
         <div class="row">
           <div class="col-xl-3 mb-30">
             <div class="card-box height-100-p pd-20">
-              <h2 class="h4" style="margin-bottom: 0">출발 위치 설정</h2>
-              <p style="color: #b4b4b4; margin-bottom: 20px">장소를 선택하여 모임 멤버를 추가해주세요.</p>
+              <h5 class="h5" style="margin-bottom: 0">출발 위치 설정</h5>
+              <p style="color: #b4b4b4; margin-bottom: 20px; font-size: 0.85rem">
+                장소를 선택하여 모임 멤버를 추가해주세요.
+              </p>
               <form onsubmit="searchPlaces(); return false;">
                 <div class="form-group mb-0" style="position: relative">
                   <div style="display: flex; align-items: center">
@@ -125,14 +130,14 @@
                 </div>
               </form>
               <div id="menu_wrap">
-                <ul id="placesList" style="overflow: auto; height: 303px"></ul>
+                <ul id="placesList" style="overflow: auto; height: 225px"></ul>
                 <div id="pagination"></div>
               </div>
             </div>
           </div>
           <div class="col-xl-6 mb-30">
             <div class="card-box height-100-p pd-20">
-              <h2 class="h4 mb-20">지도</h2>
+              <h5 class="h5 mb-20">지도</h5>
               <div class="map_wrap">
                 <div id="map"></div>
               </div>
@@ -140,7 +145,7 @@
           </div>
           <div class="col-xl-3 mb-30">
             <div class="card-box height-100-p pd-20">
-              <h2 class="h4" style="margin-bottom: 0">모임 멤버</h2>
+              <h5 class="h5" style="margin-bottom: 0">모임 멤버</h5>
               <p style="color: #b4b4b4; margin-bottom: 20px">사용자를 클릭하여 삭제할 수 있습니다.</p>
               <ul id="userlist"></ul>
               <button type="button" class="btn btn-outline-danger" onclick="goPage();" style="width: 100%">
@@ -160,13 +165,5 @@
     <!-- js -->
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
-    <script src="vendors/scripts/process.js"></script>
-    <script src="vendors/scripts/layout-settings.js"></script>
-    <script src="src/plugins/apexcharts/apexcharts.min.js"></script>
-    <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-    <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-    <script src="vendors/scripts/dashboard.js"></script>
   </body>
 </html>

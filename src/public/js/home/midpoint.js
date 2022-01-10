@@ -619,9 +619,9 @@ function getListItem(index, places) {
       (index + 1) +
       '"></span>' +
       '<div class="info">' +
-      "   <h5>" +
+      "   <h6>" +
       places.place_name +
-      "</h5>";
+      "</h6>";
 
   if (places.road_address_name) {
     itemStr +=
