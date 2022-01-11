@@ -22,10 +22,10 @@ const output = {
     res.render("home/main", { is_logined: is_logined, name: req.session.name });
   },
 
-  index: (req, res) => {
+  addmember: (req, res) => {
     var is_logined = authIsOwner(req, res);
     logger.info(`GET /main 304 "메인 화면으로 이동"`);
-    res.render("home/index", { is_logined: is_logined, name: req.session.name });
+    res.render("home/addmember", { is_logined: is_logined, name: req.session.name });
   },
 
   login: (req, res) => {

@@ -8,16 +8,16 @@ router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);
 router.get("/logout", ctrl.output.logout);
 router.get("/register", ctrl.output.register);
+router.get("/addmember", ctrl.output.addmember);
 router.get("/midpoint", ctrl.output.midpoint);
-router.get("/main", ctrl.output.home);
 router.get("/list", ctrl.output.list);
-router.get("/index", ctrl.output.index);
+router.get("/history", ctrl.process.getHistoryDb);
 
 router.post("/login", ctrl.process.login);
 router.post("/register", ctrl.process.register);
 router.post("/midpoint", ctrl.process.confirm);
-router.put("/midpoint", ctrl.process.getPlacedb);
-router.put("/list", ctrl.process.getHistoryDb);
-router.post("/list", ctrl.process.removePlace);
+router.post("/recommend", ctrl.process.getPlacedb);
+
+router.delete("/list", ctrl.process.removePlace);
 
 module.exports = router;

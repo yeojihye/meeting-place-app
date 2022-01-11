@@ -1,5 +1,5 @@
 function goIndex() {
-  location.href = "index";
+  location.href = "addmember";
 }
 
 function goList() {

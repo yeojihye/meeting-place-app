@@ -180,8 +180,8 @@ async function getPlaceStorage(univ) {
   const req = {
     univ: univ,
   };
-  const res = await fetch("midpoint", {
-    method: "PUT",
+  const res = await fetch("/recommend", {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

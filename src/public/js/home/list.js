@@ -4,11 +4,8 @@ var con_count = 1;
 Kakao.init("c06242e4a9d597f942abd0370042edbf");
 
 async function getHistoryDb() {
-  const res = await fetch("list", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  const res = await fetch("/history", {
+    method: "GET",
   });
   const data = await res.json();
   return data;
@@ -32,8 +29,8 @@ async function removePlace(cnt) {
     const req = {
       cnt: cnt,
     };
-    const res = await fetch("list", {
-      method: "POST",
+    const res = await fetch("/list", {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
