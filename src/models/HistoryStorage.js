@@ -23,7 +23,7 @@ class HistoryStorage {
 
   static async get(id) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM places_visited WHERE id = ? ORDER BY cnt ASC;`;
+      const query = `SELECT * FROM places_visited WHERE id = ? ORDER BY cnt DESC;`;
       db.query(query, [id], (err, data) => {
         if (err) reject(`${err}`);
         else {
