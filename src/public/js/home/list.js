@@ -154,9 +154,7 @@ async function popUpDetail(listOrder) {
 
     var deleteButton = document.createElement("div");
     deleteButton.setAttribute("id", "deleteButton");
-    // <button type="button" class="btn btn-outline-danger">Danger</button>
-    // deleteButton.innerHTML += `<br><input type='button' value='약속 삭제' onclick='removePlace(${cnt})'/>`
-    deleteButton.innerHTML += `<br><button type='button' class="btn btn-outline-danger" onclick='removePlace(${cnt})' style='width:100%'>삭제</button>`;
+    deleteButton.innerHTML += `<button type='button' class="btn btn-outline-danger" onclick='removePlace(${cnt})' style='width:100%'>삭제</button>`;
 
     document.getElementById(detail.id).appendChild(users);
     document.getElementById(detail.id).appendChild(deleteButton);

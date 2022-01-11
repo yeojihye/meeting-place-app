@@ -4,11 +4,12 @@ var user_num = 0; // 사용자 수
 var storage_num = 0; // 스토리지에서 키값
 var base_loc; // geolocation으로 현재 위치를  받아와서 기본 위치로 설정
 var user_road_address = []; // 사용자 출발 위치의 도로명주소 저장 리스트
-var tmp_road_address = []; // 사용자 출발 위치 확정 전 선택된 place 객체의 도로명주소 저장 리스트
 var user_place_name = []; // 사용자 출발 위치의 장소 이름 저장 리스트
-var tmp_place_name = []; // 사용자 출발 위치 확정 전 선택된 place 객체의 장소 이름 저장 리스트
-var tmp_coords = []; // 사용자 출발 위치 확정 전 선택된 place 객체의 위도 경도 값
 var user_coords = []; // 사용자 출발 위치의 위도 경도 값
+var tmp_road_address = ""; // 사용자 출발 위치 확정 전 선택된 place 객체의 도로명주소
+var tmp_place_name; // 사용자 출발 위치 확정 전 선택된 place 객체의 장소 이름
+var tmp_coordX; // 사용자 출발 위치 확정 전 선택된 place 객체의 경도 값
+var tmp_coordY; // 사용자 출발 위치 확정 전 선택된 place 객체의 위도 값
 var storage = window.sessionStorage; // 세션 스토리지
 
 // 마커 생성
@@ -201,10 +202,10 @@ function displayPlaces(places) {
             marker.setImage(normalImage);
             marker.setMap(map);
             displayInfowindow(marker, title); // 선택한 마커만 표시
-            tmp_road_address.push(itemEl.road_address_name); // 임시 저장 리스트에 선택한 장소의 도로명주소 저장
-            tmp_place_name.push(itemEl.place_name); // 임시 저장 리스트에 선택한 장소의 장소명 저장
-            tmp_coords.push(itemEl.y);
-            tmp_coords.push(itemEl.x);
+            tmp_road_address = itemEl.road_address_name; // 임시 저장 리스트에 선택한 장소의 도로명주소 저장
+            tmp_place_name = itemEl.place_name; // 임시 저장 리스트에 선택한 장소의 장소명 저장
+            tmp_coordY = itemEl.y;
+            tmp_coordX = itemEl.x;
 
             // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
             selectedMarker = marker;
@@ -332,42 +333,48 @@ function removeAllChildNods(el) {
   }
 }
 
+var removeNum = []; // 삭제한 멤버 번호
+var memberNum = 0; // 브라우저 출력될 멤버 번호
+
 function add_user() {
-  if (tmp_road_address.length < 1) {
+  if (tmp_road_address == "") {
     alert("장소를 선택해주세요!");
   } else {
     user_num++; // 사용자 인원 추가
 
-    user_road_address.push(tmp_road_address[tmp_road_address.length - 1]); // 사용자 최종 출발위치 도로명주소 저장
-    user_place_name.push(tmp_place_name[tmp_place_name.length - 1]); // 사용자 최종 출발위치 장소명 저장
-    storage.setItem(
-      user_num,
-      JSON.stringify([tmp_coords[tmp_coords.length - 2], tmp_coords[tmp_coords.length - 1]])
-    );
+    user_road_address.push(tmp_road_address); // 사용자 최종 출발위치 도로명주소 저장
+    user_place_name.push(tmp_place_name); // 사용자 최종 출발위치 장소명 저장
 
-    // 임시 리스트 초기화
-    tmp_road_address = [];
-    tmp_place_name = [];
-    tmp_coords = [];
+    // 임시 선택 장소 저장 초기화
+    tmp_road_address = "";
+    tmp_place_name = "";
+    tmp_coords = "";
+
+    if (removeNum.length == 0) {
+      memberNum = user_num;
+    } else {
+      memberNum = removeNum.pop();
+    }
+    storage.setItem(memberNum, JSON.stringify([tmp_coordY, tmp_coordX]));
 
     var adduser = document.createElement("div");
 
-    adduser.setAttribute("id", "div_" + user_num);
+    adduser.setAttribute("id", "div_" + memberNum);
     adduser.innerHTML =
       "<img src='/assets/person.png'>멤버" +
-      user_num +
+      memberNum +
       " : " +
-      user_place_name[user_num - 1] +
+      user_place_name[user_place_name.length - 1] +
       " (" +
-      user_road_address[user_num - 1] +
+      user_road_address[user_road_address.length - 1] +
       ")<hr>";
-    // adduser.style.borderBottom = "1px solid #2e6076";
     //클릭시 사용자 삭제
     adduser.addEventListener("click", function () {
       var p = this.parentElement;
       p.removeChild(this);
       storage.removeItem(adduser.id.split("_")[1]);
       user_num--;
+      removeNum.push(parseInt(adduser.id.split("_")[1]));
       user_place_name.pop();
       user_road_address.pop();
     });
@@ -375,32 +382,32 @@ function add_user() {
   }
 }
 
-function reset_all() {
-  // 전역변수 초기화
-  user_num = 0;
-  tmp_road_address = [];
-  tmp_place_name = [];
-  user_road_address = [];
-  user_place_name = [];
+// function reset_all() {
+//   // 전역변수 초기화
+//   user_num = 0;
+//   tmp_road_address = [];
+//   tmp_place_name = [];
+//   user_road_address = [];
+//   user_place_name = [];
 
-  storage.clear(); // 세션 스토리지 초기화
+//   storage.clear(); // 세션 스토리지 초기화
 
-  removeMarker();
-  removeAllChildNods(document.getElementById("placesList"));
-  var result = document.getElementById("field");
-  document.getElementById("keyword").value = "";
-  while (result.hasChildNodes()) {
-    result.removeChild(result.firstChild);
-  }
-  map.setCenter(base_loc);
-  map.setLevel(3);
+//   removeMarker();
+//   removeAllChildNods(document.getElementById("placesList"));
+//   var result = document.getElementById("field");
+//   document.getElementById("keyword").value = "";
+//   while (result.hasChildNodes()) {
+//     result.removeChild(result.firstChild);
+//   }
+//   map.setCenter(base_loc);
+//   map.setLevel(3);
 
-  //사용자 위치 출력 디브 리셋
-  var cell = document.getElementById("userlist");
-  while (cell.hasChildNodes()) {
-    cell.removeChild(cell.firstChild);
-  }
-}
+//   //사용자 위치 출력 디브 리셋
+//   var cell = document.getElementById("userlist");
+//   while (cell.hasChildNodes()) {
+//     cell.removeChild(cell.firstChild);
+//   }
+// }
 
 function goPage() {
   if (user_num < 2) {
