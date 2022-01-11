@@ -62,9 +62,9 @@ async function popUpDetail(listOrder) {
     document.getElementById(`div${listOrder}`).appendChild(detail);
 
     detail.innerHTML +=
-      '<br><div id="' +
+      '<div id="' +
       detail.id +
-      '_map" style="width:300px; height:300px; position:relative; overflow:hidden; display:inline-block;"></div>';
+      '_map" style="margin-top:20px; width:300px; height:300px; position:relative; overflow:hidden; display:inline-block;"></div>';
     var mapContainer = document.getElementById(detail.id + "_map"), // 지도를 표시할 div
       mapOption = {
         center: new kakao.maps.LatLng(db[index].lat, db[index].lng), // 지도의 중심좌표
@@ -93,10 +93,8 @@ async function popUpDetail(listOrder) {
     var addr = document.createElement("div");
 
     addr.setAttribute("id", "addr");
-    addr.innerHTML = db[index].addr;
-    // addr.innerHTML += `<a id="create-kakao-link-btn${index}" href="javascript:;">
-    // <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"/></a>`
-
+    addr.innerHTML =
+      "<h5 style='font-size:16px'>약속 장소</h5>" + db[index].place_name + "(" + db[index].addr + ")<hr>";
     document.getElementById(detail.id).appendChild(addr);
 
     var users = document.createElement("div");
@@ -118,8 +116,7 @@ async function popUpDetail(listOrder) {
       var coord = new kakao.maps.LatLng(starting_lat[i], starting_lng[i]);
       var callback = function coord2AddressCallback(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-          users.innerHTML += "<br><div id='userbar'><h5 style='font-size:16px'>멤버" + userCnt + "</h5>";
-
+          users.innerHTML += "<div id='userbar'><h5 style='font-size:16px'>멤버" + userCnt + "</h5>";
           if (result[0].road_address == null) {
             users.innerHTML += result[0].address.address_name;
             var user_addr = result[0].address.address_name;
@@ -131,14 +128,7 @@ async function popUpDetail(listOrder) {
           var mapUrl = `https://map.kakao.com/?sName=${user_addr}&eName=${db[index].addr}`;
           var mobileUrl = `https://m.map.kakao.com/actions/publicRoute?startLoc=${user_addr}&sxEnc=MMSNLS&syEnc=QOQRQPS&endLoc=${db[index].addr}&exEnc=MOPLUM&eyEnc=QNOMSNN`;
 
-          // users.innerHTML +=
-          //   '<br>' +
-          //   ` &nbsp; <input type='button' value='경로 안내' onclick="location.href='https://map.kakao.com/?sName=${user_addr}&eName=${db[index].addr}';"/>
-          // <a id="kakao-link-btn${con_count}" href='javascript:sendLink("${db[index].addr}", "${db[index].place_name}", "${mapUrl}", "${mobileUrl}")'>
-          // <img class='kakao' src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" /align="middle"></a><hr>`
-          users.innerHTML +=
-            "<br>" +
-            `<a href='https://map.kakao.com/?sName=${user_addr}&eName=${db[index].addr}'; target='_blank'>
+          users.innerHTML += `<a href='https://map.kakao.com/?sName=${user_addr}&eName=${db[index].addr}'; target='_blank'>
               <img src="/assets/kakaomap.png" style="width:34px"/>
             </a>
           <a id="kakao-link-btn${con_count}" href='javascript:sendLink("${db[index].addr}", "${db[index].place_name}", "${mapUrl}", "${mobileUrl}")'>
