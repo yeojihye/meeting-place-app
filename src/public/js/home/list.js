@@ -1,7 +1,7 @@
 var mapCount = 1;
 var geocoder = new kakao.maps.services.Geocoder();
 var con_count = 1;
-Kakao.init("3c8cb66006a235d48fe9fd48b319d1f7");
+Kakao.init("c06242e4a9d597f942abd0370042edbf");
 
 async function getList() {
   const res = await fetch("/list", {
