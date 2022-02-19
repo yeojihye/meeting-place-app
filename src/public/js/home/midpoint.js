@@ -535,7 +535,7 @@ function confirm_place(title, address, lat, lng, starting_position) {
       starting_position: starting_position,
     };
 
-    fetch("/midpoint", {
+    fetch("/list", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -554,7 +554,7 @@ function confirm_place(title, address, lat, lng, starting_position) {
       .catch((err) => {
         console.error("장소 데이터 저장 중 에러 발생");
       });
-    window.location.href = "/list";
+    window.location.href = "/history";
   } else {
     return;
   }

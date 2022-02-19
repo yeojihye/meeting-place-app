@@ -22,10 +22,10 @@ const output = {
     res.render("home/main", { is_logined: is_logined, name: req.session.name });
   },
 
-  addmember: (req, res) => {
+  startingpoint: (req, res) => {
     var is_logined = authIsOwner(req, res);
-    logger.info(`GET /main 304 "메인 화면으로 이동"`);
-    res.render("home/addmember", { is_logined: is_logined, name: req.session.name });
+    logger.info(`GET /startingpoint 304 "출발 위치 설정 화면으로 이동"`);
+    res.render("home/startingpoint", { is_logined: is_logined, name: req.session.name });
   },
 
   login: (req, res) => {
@@ -61,7 +61,7 @@ const output = {
     });
   },
 
-  list: (req, res) => {
+  history: (req, res) => {
     var is_logined = authIsOwner(req, res);
     logger.info(`GET /list 304 "약속 리스트 확인 화면으로 이동"`);
     res.render("home/list", { is_logined: is_logined, name: req.session.name });
@@ -109,7 +109,7 @@ const process = {
     return res.status(url.status).json(response);
   },
 
-  confirm: async (req, res) => {
+  save: async (req, res) => {
     const user = new User(req.body);
     const response = await user.confirm_place(req.session.name);
 
@@ -123,7 +123,7 @@ const process = {
     return res.status(url.status).json(response);
   },
 
-  getPlacedb: async (req, res) => {
+  getPlaceDb: async (req, res) => {
     const userInfo = await UserStorage.getUserInfo(req.session.name);
     const recommendData = await PlaceStorage.getRecommendData(req.body.univ, userInfo.gender);
     res.send(recommendData);

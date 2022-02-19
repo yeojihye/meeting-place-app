@@ -1,10 +1,10 @@
 var mapCount = 1;
 var geocoder = new kakao.maps.services.Geocoder();
 var con_count = 1;
-Kakao.init("c06242e4a9d597f942abd0370042edbf");
+Kakao.init("3c8cb66006a235d48fe9fd48b319d1f7");
 
-async function getHistoryDb() {
-  const res = await fetch("/history", {
+async function getList() {
+  const res = await fetch("/list", {
     method: "GET",
   });
   const data = await res.json();
@@ -12,7 +12,7 @@ async function getHistoryDb() {
 }
 
 async function load() {
-  const db = await getHistoryDb();
+  const db = await getList();
   for (var i = 0; i < db.length; i++) {
     $("#appointment_list").append(
       `<button type="button" class="list-group-item list-group-item-action list_title" id="list${
@@ -50,7 +50,7 @@ async function popUpDetail(listOrder) {
   if (detailDiv) {
     detailDiv.remove();
   } else {
-    const db = await getHistoryDb();
+    const db = await getList();
     var index = listOrder - 1;
     var cnt = db[index].cnt;
 
