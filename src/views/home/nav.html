@@ -18,7 +18,11 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
         <a class="dropdown-item" href="/history"><i class="dw dw-user1"></i> 약속 확인</a>
+        <% if(is_logined) { %>
         <a class="dropdown-item" href="/logout"><i class="dw dw-logout"></i> 로그아웃</a>
+        <% } else { %>
+        <a class="dropdown-item" href="/login"><i class="dw dw-logout"></i>로그인</a>
+        <% } %>
       </div>
     </div>
   </div>
