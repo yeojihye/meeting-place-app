@@ -39,4 +39,4 @@ $ npm start
 
 ## 🍴미리보기
 
-![preview](https://user-images.githubusercontent.com/81161651/148893912-456847ae-3ce7-4cb3-91ec-0a90a93d9d7a.png)
+![preview](https://user-images.githubusercontent.com/81161651/159682482-e3f7ec06-426f-4061-af5a-c83828a5a149.png)
