@@ -49,33 +49,7 @@
   </head>
 
   <body onload="search_mid();">
-    <div
-      class="header"
-      style="display: flex; flex-wrap: nowrap; align-items: center; padding: 0 45px 0 45px; width: 100%"
-    >
-      <h2 style="display: flex; align-items: center">
-        <a href="/">
-          <img src="/assets/person.png" style="width: 30px; margin-right: 10px" />UNIV MEETING PLACE
-        </a>
-      </h2>
-
-      <div class="user-info-dropdown">
-        <div class="dropdown">
-          <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            <span class="user-icon">
-              <i class="fa fa-user" style="color: #adadad; font-size: 29px"></i>
-            </span>
-            <span class="user-name"><%=name%></span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-            <a class="dropdown-item" href="/history"><i class="dw dw-user1"></i> 약속 확인</a>
-            <a class="dropdown-item" href="/logout"><i class="dw dw-logout"></i> 로그아웃</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-menu-overlay"></div>
+    <%- include('nav.html') %>
 
     <div class="main-container">
       <div class="pd-ltr-20">

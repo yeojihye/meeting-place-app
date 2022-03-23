@@ -19,7 +19,7 @@ const output = {
   home: (req, res) => {
     var is_logined = authIsOwner(req, res);
     logger.info(`GET / 304 "홈 화면으로 이동"`);
-    res.render("home/main", { is_logined: is_logined, name: req.session.name });
+    res.render("home/index", { is_logined: is_logined, name: req.session.name });
   },
 
   startingpoint: (req, res) => {
