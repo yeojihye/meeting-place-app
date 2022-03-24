@@ -22,12 +22,6 @@ const output = {
     res.render("home/index", { is_logined: is_logined, name: req.session.name });
   },
 
-  startingpoint: (req, res) => {
-    var is_logined = authIsOwner(req, res);
-    logger.info(`GET /startingpoint 304 "출발 위치 설정 화면으로 이동"`);
-    res.render("home/startingpoint", { is_logined: is_logined, name: req.session.name });
-  },
-
   login: (req, res) => {
     var is_logined = authIsOwner(req, res);
     if (is_logined) res.redirect("/");

@@ -8,7 +8,6 @@ router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);
 router.get("/logout", ctrl.output.logout);
 router.get("/register", ctrl.output.register);
-router.get("/startingpoint", ctrl.output.startingpoint);
 router.get("/midpoint", ctrl.output.midpoint);
 router.get("/history", ctrl.output.history);
 
