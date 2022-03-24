@@ -26,33 +26,13 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-.form #button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #844994;
-  width: 89%;
-  border: 0;
-  margin: 0 auto;
-  padding: 15px;
-  color: #ffffff;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.form #button:hover,
-.form #button:active,
-.form #button:focus {
-  background: #e3c8f3;
-}
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
 .form .message a {
-  color: #844994;
+  color: cornflowerblue;
   text-decoration: none;
 }
 .form .register-form {
@@ -93,11 +73,7 @@
   color: #ef3b3a;
 }
 body {
-  background: #8fbc8f; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #e6e6fa, #c5b5d3);
-  background: -moz-linear-gradient(right, #e6e6fa, #c5b5d3);
-  background: -o-linear-gradient(right, #e6e6fa, #c5b5d3);
-  background: linear-gradient(to left, #e6e6fa, #c5b5d3);
+  background: #ecf0f4;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
